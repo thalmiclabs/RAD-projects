@@ -56,7 +56,7 @@ window.onload = function() {
 
 	var bones = [];
 
-	loader.load('/sockpuppet.dae' , function ( collada ) {
+	loader.load('sockpuppet.dae' , function ( collada ) {
 
 		console.log(collada);
 
