@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>hmi</author>
+      <authoring_tool>OpenCOLLADA2014 x64</authoring_tool>
+      <comments>
+			ColladaMaya export options:
+			bakeTransforms=1;relativePaths=0;copyTextures=0;exportTriangles=0;exportCgfxFileReferences=1;
+			isSampling=0;curveConstrainSampling=0;removeStaticCurves=1;exportPolygonMeshes=1;exportLights=1;
+			exportCameras=1;exportJointsAndSkin=1;exportAnimations=1;exportInvisibleNodes=0;exportDefaultCameras=0;
+			exportTexCoords=1;exportNormals=1;exportNormalsPerVertex=1;exportVertexColors=1;exportVertexColorsPerVertex=1;
+			exportTexTangents=0;exportTangents=0;exportReferencedMaterials=0;exportMaterialsOnly=0;
+			exportXRefs=1;dereferenceXRefs=1;exportCameraAsLookat=0;cameraXFov=0;cameraYFov=1;doublePrecision=0
+		</comments>
+      <source_data>file:///Projectes/triloquist/project/src/coco.mb</source_data>
+    </contributor>
+    <created>2014-07-12T17:02:23</created>
+    <modified>2014-07-12T17:02:23</modified>
+    <unit name="centimeter" meter="0.01"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+    <material id="cocoMat" name="cocoMat">
+      <instance_effect url="#cocoMat-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="cocoMat-fx">
+      <profile_COMMON>
+        <newparam sid="file1-surface">
+          <surface type="2D">
+            <init_from>file1</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="file1-sampler">
+          <sampler2D>
+            <source>file1-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="file1-sampler" texcoord="TEX0">
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <blend_mode>NONE</blend_mode>
+                    <coverageU>1</coverageU>
+                    <coverageV>1</coverageV>
+                    <fast>0</fast>
+                    <mirrorU>0</mirrorU>
+                    <mirrorV>0</mirrorV>
+                    <noiseU>0</noiseU>
+                    <noiseV>0</noiseV>
+                    <offsetU>0</offsetU>
+                    <offsetV>0</offsetV>
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateFrame>0</rotateFrame>
+                    <rotateUV>0</rotateUV>
+                    <stagger>0</stagger>
+                    <translateFrameU>0</translateFrameU>
+                    <translateFrameV>0</translateFrameV>
+                    <wrapU>1</wrapU>
+                    <wrapV>1</wrapV>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.4 0.4 0.4 1</color>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="file1" name="file1">
+      <init_from>cocoTexture.png</init_from>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <dgnode_type>kFile</dgnode_type>
+          <image_sequence>0</image_sequence>
+          <originalMayaNodeId>file1</originalMayaNodeId>
+        </technique>
+      </extra>
+    </image>
+  </library_images>
+  <library_controllers>
+    <controller id="cocodrileShape-skin" name="cocodrileShape-skin">
+      <skin source="#cocodrileShape">
+        <bind_shape_matrix>1 0 0 -0.909963 0 1 0 3.820166 0 0 1 0.08795078 0 0 0 1</bind_shape_matrix>
+        <source id="cocodrileShape-skin-joints" name="cocodrileShape-skin-joints">
+          <Name_array id="cocodrileShape-skin-joints-array" count="8">joint1 jointShoulders jointNeck jointHead jointPalate joint6 jointJaw joint8</Name_array>
+          <technique_common>
+            <accessor source="#cocodrileShape-skin-joints-array" count="8" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cocodrileShape-skin-bind_poses" name="cocodrileShape-skin-bind_poses">
+          <float_array id="cocodrileShape-skin-bind_poses-array" count="128">0 1 0 4.966597 -1 0 0 0.060058 0 0 1 0 0 0 0 1 0 1 0 -2.310832 -1 0 0 0.060058 0 0 1 0 0 0 0 1 0 1 0 -10.38216 -1 0 0 0.060058 0 0 1 0 0 0 0 1 1 0 0 -0.060058 0 1 0 -18.27707 0 0 1 0 0 0 0 1 -0.999635 0.02701716 0 -4.991662 0.02701716 0.999635 0 -12.23652 0 0 -1 0 0 0 0 1 1 0 0 11.18688 0 1 0 -12.54334 0 0 1 0 0 0 0 1 -0.9997831 0.02082881 0 -4.840491 0.02082881 0.9997831 0 -8.651309 0 0 -1 0 0 0 0 1 1 0 0 11.01045 0 1 0 -8.88257 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#cocodrileShape-skin-bind_poses-array" count="8" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cocodrileShape-skin-weights" name="cocodrileShape-skin-weights">
+          <float_array id="cocodrileShape-skin-weights-array" count="145">1 0.8254146 0.1453889 0.0291965 0.8460342 0.1390507 0.01491504 0.3155136 0.3542474 0.330239 0.4228215 0.4779769 0.09920156 0.1820395 0.118216 0.6997445 0.2176784 0.5121731 0.2701484 0.05493479 0.02921348 0.9158517 0.1735369 0.594439 0.232024 0.04935026 0.02598416 0.9246655 0.1714987 0.5984247 0.2300765 0.1733646 0.1110061 0.7156293 0.2143667 0.5180765 0.2675568 0.3148908 0.3549994 0.3301098 0.4234195 0.480861 0.09571945 0.8317478 0.1404985 0.02775365 0.8521232 0.1338152 0.01406157 0.896023 0.08915698 0.01481997 0.9134795 0.07975327 0.006767213 0.8935884 0.09115529 0.01525622 0.9111781 0.08182048 0.007001399 0.4243468 0.5160625 0.05959075 0.4245759 0.5144361 0.06098788 0.3059847 0.3659134 0.3281019 0.3064491 0.3653369 0.3282141 0.1052449 0.5030866 0.3916685 0.4599969 0.4664121 0.07359087 0.4739869 0.4845421 0.04147088 0.01874375 0.6990905 0.2821657 0.4744275 0.4852073 0.04036515 0.01581805 0.7186705 0.2655115 0.4613966 0.4680815 0.07052189 0.09795373 0.5115106 0.3905357 0.1739946 0.7057679 0.1202374 0.2494947 0.5064002 0.2441051 0.2091035 0.5878739 0.2030225 0.04651308 0.9264976 0.02698928 0.2071235 0.5918468 0.2010296 0.04115688 0.9351697 0.02367335 0.2466285 0.5122117 0.2411598 0.1651208 0.7221643 0.1127148 0.4447265 0.4447265 0.1105468 0.03420275 0.4828986 0.4828986 0.01389408 0.4930529 0.4930529 0.4683369 0.4683369 0.06332617 0.0131191 0.4934405 0.4934405 0.4694845 0.4694845 0.06103092 0.03173083 0.4841346 0.4841346 0.4471259 0.4471259 0.1057481 </float_array>
+          <technique_common>
+            <accessor source="#cocodrileShape-skin-weights-array" count="145" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#cocodrileShape-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#cocodrileShape-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="80">
+          <input semantic="JOINT" source="#cocodrileShape-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#cocodrileShape-skin-weights" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 </vcount>
+          <v>0 1 1 2 6 3 0 4 1 5 2 6 0 7 1 8 6 9 0 10 1 11 2 12 1 13 4 14 6 15 0 16 1 17 2 18 1 19 4 20 6 21 0 22 1 23 2 24 1 25 4 26 6 27 0 28 1 29 2 30 1 31 4 32 6 33 0 34 1 35 2 36 0 37 1 38 6 39 0 40 1 41 2 42 0 43 1 44 6 45 0 46 1 47 2 48 0 49 1 50 6 51 0 52 1 53 2 54 0 55 1 56 6 57 0 58 1 59 2 60 0 61 1 62 2 63 0 64 1 65 2 66 0 67 1 68 6 69 0 70 1 71 6 72 2 73 4 74 6 75 1 76 2 77 3 78 1 79 2 80 3 81 2 82 4 83 6 84 1 85 2 86 3 87 2 88 4 89 6 90 1 91 2 92 3 93 2 94 4 95 6 96 2 97 4 98 6 99 1 100 2 101 3 102 1 103 2 104 3 105 2 106 4 107 6 108 1 109 2 110 3 111 2 112 4 113 6 114 1 115 2 116 3 117 2 118 4 119 6 120 6 0 6 0 6 0 6 0 6 0 6 0 6 0 6 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 2 121 3 122 4 123 1 124 2 125 3 126 1 127 2 128 3 129 2 130 3 131 4 132 1 133 2 134 3 135 2 136 3 137 4 138 1 139 2 140 3 141 2 142 3 143 4 144 </v>
+        </vertex_weights>
+        <extra>
+          <technique profile="OpenCOLLADAMaya">
+            <originalMayaNodeId>cocodrileShape-skin</originalMayaNodeId>
+          </technique>
+        </extra>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_geometries>
+    <geometry id="cocodrileShape" name="cocodrileShape">
+      <mesh>
+        <source id="cocodrileShape-positions" name="cocodrileShape-positions">
+          <float_array id="cocodrileShape-positions-array" count="240">-3.820166 -8.77886 3.820166 5.526165 -8.77886 3.820166 -3.820166 0 3.820166 5.526165 0 3.820166 -3.820166 2.876763 3.820166 5.526165 2.876763 3.820166 -3.820166 2.876763 1.273389 5.526165 2.876763 1.273389 -3.820166 2.876763 -1.273389 5.526165 2.876763 -1.273389 -3.820166 2.876763 -3.820166 5.526165 2.876763 -3.820166 -3.820166 0 -3.820166 5.526165 0 -3.820166 -3.820166 -8.77886 -3.820166 5.526165 -8.77886 -3.820166 -3.820166 -8.77886 -1.273389 5.526165 -8.77886 -1.273389 -3.820166 -8.77886 1.273389 5.526165 -8.77886 1.273389 5.526165 0 -1.273389 5.526165 0 1.273389 -3.820166 0 -1.273389 -3.820166 0 1.273389 -3.820166 7.062379 3.820166 5.526165 7.062379 3.820166 5.526165 7.062379 1.273389 -3.820166 7.062379 1.273389 5.526165 7.062379 -1.273389 -3.820166 7.062379 -1.273389 5.526165 7.062379 -3.820166 -3.820166 7.062379 -3.820166 -3.820166 10.47375 3.820166 5.526165 10.47375 3.820166 5.526165 10.47375 1.273389 -3.820166 10.47375 1.273389 5.526165 10.47375 -1.273389 -3.820166 10.47375 -1.273389 5.526165 10.47375 -3.820166 -3.820166 10.47375 -3.820166 -9.209108 4.553765 3.820166 -9.209108 4.553765 1.273389 -9.209108 6.424453 3.820166 -9.209108 6.424453 1.273389 -9.209108 4.553765 -1.273389 -9.209108 6.424453 -1.273389 -9.209108 4.553765 -3.820166 -9.209108 6.424453 -3.820166 -9.269316 7.631196 3.820166 -9.269316 7.631196 1.273389 -9.269316 10.35823 3.820166 -9.269316 10.35823 1.273389 -9.269316 7.631196 -1.273389 -9.269316 10.35823 -1.273389 -9.269316 7.631196 -3.820166 -9.269316 10.35823 -3.820166 -6.914598 7.423789 3.820166 -6.914598 7.423789 1.273389 -6.914598 7.423789 -1.273389 -6.914598 7.423789 -3.820166 -6.914598 10.40035 -3.820166 -6.914598 10.40035 -1.273389 -6.914598 10.40035 1.273389 -6.914598 10.40035 3.820166 -7.228516 11.48951 -3.501819 -7.228516 11.48951 -1.591736 -8.994555 11.45792 -3.501819 -8.994555 11.45792 -1.591736 -7.228517 11.48951 1.591736 -7.228517 11.48951 3.501819 -8.994555 11.45792 1.591736 -8.994555 11.45792 3.501819 -2.610446 14.61475 3.416926 4.316445 14.61475 3.416926 4.316445 14.61475 1.273389 -2.610447 14.61475 1.273389 4.316445 14.61475 -1.273389 -2.610446 14.61475 -1.273389 4.316445 14.61475 -3.416926 -2.610446 14.61475 -3.416926</float_array>
+          <technique_common>
+            <accessor source="#cocodrileShape-positions-array" count="80" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cocodrileShape-normals" name="cocodrileShape-normals">
+          <float_array id="cocodrileShape-normals-array" count="900">0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0.9999999 0 0 1 0 0 0.9999999 0 0 1 0 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 1 0 0 1 0 0 1 0 0 1 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 -0.9999999 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 0 0 1 0 0 1 0 0 0.9999999 0 0 1 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.2971379 -0.9548345 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 -0.1175561 0.9930663 0 0 0 -1 0 0 -1 0 0 -1 0 0 -0.9999999 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 0 0 1 0 0 1 0 0 1 0 0 0.9999999 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.1160048 -0.9932486 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 -0.02371351 0.9997188 0 0 0 -1 0 0 -1 0 0 -0.9999999 0 0 -1 -0.08774218 -0.9961431 0 -0.08774218 -0.9961432 0 -0.08774218 -0.9961431 0 -0.08774218 -0.9961431 0 -0.08774217 -0.9961431 0 -0.08774217 -0.9961431 0 -0.08774217 -0.9961431 0 -0.08774217 -0.9961431 0 -0.08774218 -0.9961432 0 -0.08774218 -0.9961431 0 -0.08774218 -0.9961431 0 -0.08774218 -0.9961431 0 0 0 -1 0 0 -1 0 0 -0.9999999 0 0 -0.9999999 -0.01788652 0.9998401 0 -0.01788652 0.9998401 0 -0.01788652 0.9998401 0 -0.01788652 0.9998401 0 -0.01788625 0.99984 0 -0.01788625 0.99984 0 -0.01788625 0.99984 0 -0.01788625 0.99984 0 -0.01788653 0.99984 0 -0.01788653 0.99984 0 -0.01788653 0.99984 0 -0.01788653 0.99984 0 0 0 1 0 0 1 0 0 0.9999999 0 0 0.9999999 0.9608851 0.2769469 0 0.9608852 0.2769469 0 0.9608852 0.276947 0 0.9608852 0.2769469 0 -0.004995096 0.2792194 -0.9602143 -0.004995096 0.2792194 -0.9602144 -0.004995096 0.2792194 -0.9602143 -0.004995096 0.2792194 -0.9602144 -0.9701757 0.2424024 0 -0.9701757 0.2424024 0 -0.9701757 0.2424024 0 -0.9701757 0.2424024 0 -0.004994994 0.2792193 0.9602144 -0.004994994 0.2792193 0.9602144 -0.004994994 0.2792193 0.9602144 -0.004994994 0.2792193 0.9602143 0.9608848 0.276948 0 0.9608849 0.2769481 0 0.9608849 0.2769481 0 0.9608849 0.2769481 0 -0.004994996 0.2792193 -0.9602143 -0.004994996 0.2792193 -0.9602143 -0.004994996 0.2792193 -0.9602143 -0.004994996 0.2792193 -0.9602143 -0.9701757 0.2424024 0 -0.9701757 0.2424024 0 -0.9701758 0.2424024 0 -0.9701758 0.2424024 0 -0.004994897 0.2792192 0.9602143 -0.004994896 0.2792192 0.9602143 -0.004994896 0.2792192 0.9602143 -0.004994897 0.2792192 0.9602143 0 0.0969191 0.9952922 0 0.0969191 0.9952922 0 0.09691909 0.9952922 0 0.09691909 0.9952922 0.9598797 0.280412 0 0.9598796 0.280412 0 0.9598797 0.280412 0 0.9598798 0.2804121 0 -0.9598798 0.280412 0 -0.9598797 0.280412 0 -0.9598798 0.280412 0 -0.9598798 0.280412 0 0.9598798 0.280412 0 0.9598798 0.280412 0 0.9598798 0.280412 0 0.9598798 0.280412 0 -0.9598798 0.280412 0 -0.9598798 0.280412 0 -0.9598798 0.280412 0 -0.9598798 0.2804121 0 0.9598796 0.280412 0 0.9598797 0.280412 0 0.9598798 0.280412 0 0.9598796 0.280412 0 0 0.09691902 -0.9952922 0 0.09691903 -0.9952923 0 0.09691903 -0.9952922 0 0.09691902 -0.9952922 -0.9598796 0.2804121 0 -0.9598797 0.2804121 0 -0.9598796 0.2804121 0 -0.9598797 0.2804121 0</float_array>
+          <technique_common>
+            <accessor source="#cocodrileShape-normals-array" count="300" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cocodrileShape-map1" name="cocodrileShape-map1">
+          <float_array id="cocodrileShape-map1-array" count="288">0.1636276 0.00258419 0.3980813 0.002288229 0.3982423 0.2219549 0.1636277 0.2223498 0.3982423 0.2939703 0.1636277 0.2943652 0.3982423 0.3987511 0.1636277 0.3991457 0.3982423 0.4841497 0.1636277 0.4845445 0.003473623 0.3831761 0.003473623 0.3363464 0.06091317 0.482707 0.06091317 0.408193 0.6464503 0.9523545 0.001966456 0.4816524 0.609557 0.9523545 0.001966515 0.4133854 0.609557 0.9182433 0.6464501 0.9182433 0.798384 0.7821115 0.6044142 0.7821115 0.6044145 0.722087 0.798384 0.722087 0.6044142 0.650771 0.798384 0.6507713 0.6044145 0.5907468 0.798384 0.5907468 0.8235305 0.2938484 0.5897383 0.2937982 0.5897384 0.2217826 0.8235305 0.2218328 0.5896936 0.002029689 0.8235305 0.002067229 0.8235306 0.3986289 0.8235305 0.4840275 0.9836848 0.3358296 0.9836848 0.3826593 0.9262456 0.4076759 0.2589122 0.9546079 0.9262455 0.4821899 0.9851919 0.4128684 0.9851918 0.4811355 0.2214888 0.9546077 0.2214888 0.9200068 0.2589119 0.9200068 0.5260731 0.00199215 0.5260731 0.2217578 0.4623184 0.001992032 0.4623184 0.2217577 0.5260731 0.2937733 0.4623184 0.2937733 0.4623184 0.3985538 0.5260732 0.3985541 0.589649 0.3986038 0.4623185 0.4839523 0.5260732 0.4839526 0.5896489 0.4840024 0.4623185 0.5876161 0.4086582 0.5876162 0.5260731 0.5876162 0.5797333 0.5876162 0.4934749 0.5940982 0.4934749 0.6586165 0.271077 0.6586163 0.2710768 0.5940982 0.4934748 0.7231348 0.271077 0.7231348 0.4934747 0.7876533 0.271077 0.7876531 0.198199 0.6586164 0.198199 0.5940983 0.198199 0.7231348 0.198199 0.7876534 0.04935721 0.7231349 0.04935721 0.7876532 0.001966476 0.7876531 0.001966476 0.7231349 0.04935744 0.6586165 0.001966476 0.6586164 0.04935721 0.5940983 0.001966476 0.5940982 0.4542888 0.998008 0.3897702 0.9980077 0.3897702 0.9289228 0.4542886 0.9289228 0.5188072 0.9980078 0.5188072 0.9289228 0.5833253 0.998008 0.5833256 0.9289228 0.5268719 0.9010642 0.5752606 0.9010641 0.397835 0.9010641 0.4462239 0.9010642 0.6198428 0.5876908 0.7932474 0.5876908 0.1939113 0.5882079 0.3673155 0.5882078 0.265698 0.8981926 0.202181 0.8981928 0.2122378 0.7949157 0.2656977 0.7949157 0.1959361 0.9551849 0.13128 0.9551845 0.1312795 0.7927654 0.1959363 0.7927654 0.06662273 0.9551845 0.06662297 0.7927654 0.001966476 0.9551849 0.001966476 0.7927652 0.8058759 0.7855494 0.8705327 0.7855493 0.8705322 0.8897166 0.8058759 0.8897163 0.7412192 0.7855492 0.7412194 0.8897164 0.6765628 0.7855492 0.6765628 0.8897166 0.8705327 0.949497 0.8058759 0.9494971 0.7412196 0.9494969 0.6765628 0.949497 0.6306372 0.8951287 0.5659809 0.8951291 0.5659807 0.7909616 0.6306372 0.7909617 0.5013241 0.895129 0.5013244 0.7909614 0.4366676 0.8951291 0.4366676 0.7909613 0.5013239 0.7311808 0.5659809 0.7311808 0.6660231 0.9710356 0.5899845 0.9710355 0.5899845 0.9007313 0.6660231 0.9007314 0.2782197 0.973044 0.2021813 0.973044 0.2021811 0.90274 0.2782197 0.9027399 0.3292149 0.8981926 0.3292149 0.7949158 0.3927314 0.8981924 0.3826748 0.7949158</float_array>
+          <technique_common>
+            <accessor source="#cocodrileShape-map1-array" count="144" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="cocodrileShape-vertices" name="cocodrileShape-vertices">
+          <input semantic="POSITION" source="#cocodrileShape-positions"/>
+        </vertices>
+        <polylist material="lambert2SG" count="75">
+          <input semantic="VERTEX" source="#cocodrileShape-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#cocodrileShape-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#cocodrileShape-map1" offset="2" set="0"/>
+          <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4</vcount>
+          <p>0 0 0 1 1 1 3 2 2 2 3 3 2 4 3 3 5 2 5 6 4 4 7 5 72 8 20 73 9 21 74 10 22 75 11 23 75 12 23 74 13 22 76 14 24 77 15 25 77 16 25 76 17 24 78 18 26 79 19 27 10 20 28 11 21 29 13 22 30 12 23 31 12 24 31 13 25 30 15 26 32 14 27 33 17 28 46 15 29 32 13 30 30 20 31 47 19 32 48 17 33 46 20 34 47 21 35 49 1 36 1 19 37 48 21 38 49 3 39 2 20 40 47 13 41 30 11 42 29 9 43 50 21 44 49 20 45 47 9 46 50 7 47 51 3 48 2 21 49 49 7 50 51 5 51 4 14 52 62 16 53 63 22 54 64 12 55 65 16 56 63 18 57 66 23 58 67 22 59 64 18 60 66 0 61 68 2 62 69 23 63 67 12 64 65 22 65 64 8 66 70 10 67 71 22 68 64 23 69 67 6 70 72 8 71 70 23 72 67 2 73 69 4 74 73 6 75 72 4 76 5 5 77 4 25 78 6 24 79 7 5 80 4 7 81 51 26 82 52 25 83 6 41 84 74 40 85 75 42 86 76 43 87 77 7 88 51 9 89 50 28 90 53 26 91 52 44 92 78 41 93 74 43 94 77 45 95 79 9 96 50 11 97 29 30 98 54 28 99 53 11 100 29 10 101 28 31 102 34 30 103 54 46 104 80 44 105 78 45 106 79 47 107 81 24 108 7 25 109 6 33 110 8 32 111 9 25 112 6 26 113 52 34 114 55 33 115 8 49 116 82 48 117 83 50 118 84 51 119 85 26 120 52 28 121 53 36 122 56 34 123 55 52 124 86 49 125 82 51 126 85 53 127 87 28 128 53 30 129 54 38 130 57 36 131 56 30 132 54 31 133 34 39 134 35 38 135 57 54 136 88 52 137 86 53 138 87 55 139 89 6 140 72 4 141 73 40 142 75 41 143 74 4 144 5 24 145 7 42 146 10 40 147 11 24 148 102 27 149 103 43 150 104 42 151 105 8 152 70 6 153 72 41 154 74 44 155 78 27 156 103 29 157 106 45 158 107 43 159 104 10 160 71 8 161 70 44 162 78 46 163 80 29 164 106 31 165 108 47 166 109 45 167 107 31 168 34 10 169 28 46 170 36 47 171 37 27 172 110 24 173 111 56 174 112 57 175 113 24 176 7 32 177 9 63 178 12 56 179 13 32 180 122 35 181 123 62 182 124 63 183 125 29 184 114 27 185 110 57 186 113 58 187 115 35 188 123 37 189 126 61 190 127 62 191 124 31 192 116 29 193 114 58 194 115 59 195 117 37 196 126 39 197 128 60 198 129 61 199 127 39 200 35 31 201 34 59 202 38 60 203 40 57 204 113 56 205 112 48 206 118 49 207 119 58 208 115 57 209 113 49 210 119 52 211 120 59 212 117 58 213 115 52 214 120 54 215 121 60 216 40 59 217 38 54 218 41 55 219 42 65 220 14 64 221 16 66 222 18 67 223 19 62 224 124 61 225 127 53 226 130 51 227 131 69 228 39 68 229 43 70 230 44 71 231 45 56 232 13 63 233 12 50 234 15 48 235 17 61 236 132 60 237 133 64 238 16 65 239 14 60 240 133 55 241 134 66 242 18 64 243 16 55 244 89 53 245 87 67 246 90 66 247 91 53 248 135 61 249 132 65 250 14 67 251 19 63 252 136 62 253 137 68 254 43 69 255 39 62 256 137 51 257 138 70 258 44 68 259 43 51 260 85 50 261 84 71 262 92 70 263 93 50 264 139 63 265 136 69 266 39 71 267 45 32 268 9 33 269 8 73 270 97 72 271 96 33 272 8 34 273 55 74 274 58 73 275 59 35 276 98 32 277 99 72 278 100 75 279 101 34 280 55 36 281 56 76 282 60 74 283 58 37 284 140 35 285 98 75 286 101 77 287 141 36 288 56 38 289 57 78 290 61 76 291 60 38 292 57 39 293 35 79 294 95 78 295 94 39 296 142 37 297 140 77 298 141 79 299 143</p>
+        </polylist>
+      </mesh>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <originalMayaNodeId>cocodrileShape</originalMayaNodeId>
+          <double_sided>1</double_sided>
+        </technique>
+      </extra>
+    </geometry>
+    <geometry id="eyeLShape" name="eyeLShape">
+      <mesh>
+        <source id="eyeLShape-positions" name="eyeLShape-positions">
+          <float_array id="eyeLShape-positions-array" count="12">-2.25404 0 2.25404 2.25404 0 2.25404 -2.25404 0 -2.25404 2.25404 0 -2.25404</float_array>
+          <technique_common>
+            <accessor source="#eyeLShape-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeLShape-normals" name="eyeLShape-normals">
+          <float_array id="eyeLShape-normals-array" count="12">0 1 0 0 1 0 0 1 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#eyeLShape-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeLShape-map1" name="eyeLShape-map1">
+          <float_array id="eyeLShape-map1-array" count="8">0.9398636 0.5805313 0.8930659 0.5805312 0.9398636 0.5337337 0.8930659 0.5337337</float_array>
+          <technique_common>
+            <accessor source="#eyeLShape-map1-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="eyeLShape-vertices" name="eyeLShape-vertices">
+          <input semantic="POSITION" source="#eyeLShape-positions"/>
+          <input semantic="NORMAL" source="#eyeLShape-normals"/>
+        </vertices>
+        <polylist material="lambert2SG" count="1">
+          <input semantic="VERTEX" source="#eyeLShape-vertices" offset="0"/>
+          <input semantic="TEXCOORD" source="#eyeLShape-map1" offset="1" set="0"/>
+          <vcount>4</vcount>
+          <p>0 0 1 1 3 3 2 2</p>
+        </polylist>
+      </mesh>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <originalMayaNodeId>eyeLShape</originalMayaNodeId>
+          <double_sided>1</double_sided>
+        </technique>
+      </extra>
+    </geometry>
+    <geometry id="eyeRShape" name="eyeRShape">
+      <mesh>
+        <source id="eyeRShape-positions" name="eyeRShape-positions">
+          <float_array id="eyeRShape-positions-array" count="12">-2.25404 0 2.25404 2.25404 0 2.25404 -2.25404 0 -2.25404 2.25404 0 -2.25404</float_array>
+          <technique_common>
+            <accessor source="#eyeRShape-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeRShape-normals" name="eyeRShape-normals">
+          <float_array id="eyeRShape-normals-array" count="12">0 1 0 0 1 0 0 1 0 0 1 0</float_array>
+          <technique_common>
+            <accessor source="#eyeRShape-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeRShape-map1" name="eyeRShape-map1">
+          <float_array id="eyeRShape-map1-array" count="8">0.9398636 0.5805313 0.8930659 0.5805312 0.9398636 0.5337337 0.8930659 0.5337337</float_array>
+          <technique_common>
+            <accessor source="#eyeRShape-map1-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="eyeRShape-vertices" name="eyeRShape-vertices">
+          <input semantic="POSITION" source="#eyeRShape-positions"/>
+          <input semantic="NORMAL" source="#eyeRShape-normals"/>
+        </vertices>
+        <polylist material="lambert2SG" count="1">
+          <input semantic="VERTEX" source="#eyeRShape-vertices" offset="0"/>
+          <input semantic="TEXCOORD" source="#eyeRShape-map1" offset="1" set="0"/>
+          <vcount>4</vcount>
+          <p>0 0 1 1 3 3 2 2</p>
+        </polylist>
+      </mesh>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <originalMayaNodeId>eyeRShape</originalMayaNodeId>
+          <double_sided>1</double_sided>
+        </technique>
+      </extra>
+    </geometry>
+    <geometry id="eyeBrowLShape" name="eyeBrowLShape">
+      <mesh>
+        <source id="eyeBrowLShape-positions" name="eyeBrowLShape-positions">
+          <float_array id="eyeBrowLShape-positions-array" count="12">-0.5600381 0 1.74182 0.5600381 0 1.74182 -0.5600381 0 -1.74182 0.5600381 0 -1.74182</float_array>
+          <technique_common>
+            <accessor source="#eyeBrowLShape-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeBrowLShape-normals" name="eyeBrowLShape-normals">
+          <float_array id="eyeBrowLShape-normals-array" count="12">0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0</float_array>
+          <technique_common>
+            <accessor source="#eyeBrowLShape-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeBrowLShape-map1" name="eyeBrowLShape-map1">
+          <float_array id="eyeBrowLShape-map1-array" count="8">0.9607066 0.609329 0.9607066 0.6376479 0.8726298 0.609329 0.8726298 0.6376479</float_array>
+          <technique_common>
+            <accessor source="#eyeBrowLShape-map1-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="eyeBrowLShape-vertices" name="eyeBrowLShape-vertices">
+          <input semantic="POSITION" source="#eyeBrowLShape-positions"/>
+          <input semantic="NORMAL" source="#eyeBrowLShape-normals"/>
+        </vertices>
+        <polylist material="lambert2SG" count="1">
+          <input semantic="VERTEX" source="#eyeBrowLShape-vertices" offset="0"/>
+          <input semantic="TEXCOORD" source="#eyeBrowLShape-map1" offset="1" set="0"/>
+          <vcount>4</vcount>
+          <p>0 0 1 1 3 3 2 2</p>
+        </polylist>
+      </mesh>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <originalMayaNodeId>eyeBrowLShape</originalMayaNodeId>
+          <double_sided>1</double_sided>
+        </technique>
+      </extra>
+    </geometry>
+    <geometry id="eyeBrowRShape" name="eyeBrowRShape">
+      <mesh>
+        <source id="eyeBrowRShape-positions" name="eyeBrowRShape-positions">
+          <float_array id="eyeBrowRShape-positions-array" count="12">-0.5600381 0 1.74182 0.5600381 0 1.74182 -0.5600381 0 -1.74182 0.5600381 0 -1.74182</float_array>
+          <technique_common>
+            <accessor source="#eyeBrowRShape-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeBrowRShape-normals" name="eyeBrowRShape-normals">
+          <float_array id="eyeBrowRShape-normals-array" count="12">0 0.9999999 0 0 0.9999999 0 0 0.9999999 0 0 0.9999999 0</float_array>
+          <technique_common>
+            <accessor source="#eyeBrowRShape-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="eyeBrowRShape-map1" name="eyeBrowRShape-map1">
+          <float_array id="eyeBrowRShape-map1-array" count="8">0.9607066 0.609329 0.9607066 0.6376479 0.8726298 0.609329 0.8726298 0.6376479</float_array>
+          <technique_common>
+            <accessor source="#eyeBrowRShape-map1-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="eyeBrowRShape-vertices" name="eyeBrowRShape-vertices">
+          <input semantic="POSITION" source="#eyeBrowRShape-positions"/>
+          <input semantic="NORMAL" source="#eyeBrowRShape-normals"/>
+        </vertices>
+        <polylist material="lambert2SG" count="1">
+          <input semantic="VERTEX" source="#eyeBrowRShape-vertices" offset="0"/>
+          <input semantic="TEXCOORD" source="#eyeBrowRShape-map1" offset="1" set="0"/>
+          <vcount>4</vcount>
+          <p>0 0 1 1 3 3 2 2</p>
+        </polylist>
+      </mesh>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <originalMayaNodeId>eyeBrowRShape</originalMayaNodeId>
+          <double_sided>1</double_sided>
+        </technique>
+      </extra>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="coco">
+      <node id="cocodrile" name="cocodrile" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_controller url="#cocodrileShape-skin">
+          <skeleton>#joint1</skeleton>
+          <skeleton>#joint6</skeleton>
+          <skeleton>#joint8</skeleton>
+          <skeleton>#jointHead</skeleton>
+          <skeleton>#jointJaw</skeleton>
+          <skeleton>#jointNeck</skeleton>
+          <skeleton>#jointPalate</skeleton>
+          <skeleton>#jointShoulders</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert2SG" target="#cocoMat">
+                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+        <extra>
+          <technique profile="OpenCOLLADAMaya">
+            <originalMayaNodeId>cocodrile</originalMayaNodeId>
+          </technique>
+        </extra>
+      </node>
+      <node id="joint1" name="joint1" sid="joint1" type="JOINT">
+        <matrix sid="transform">0 -1 0 0.060058 1 0 0 -4.966597 0 0 1 0 0 0 0 1</matrix>
+        <node id="jointShoulders" name="jointShoulders" sid="jointShoulders" type="JOINT">
+          <matrix sid="transform">1 0 0 7.277429 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="jointNeck" name="jointNeck" sid="jointNeck" type="JOINT">
+            <matrix sid="transform">1 0 0 8.07133 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+            <node id="jointHead" name="jointHead" sid="jointHead" type="JOINT">
+              <matrix sid="transform">0 1 0 7.894908 -1 0 0 0 0 0 1 0 0 0 0 1</matrix>
+              <extra>
+                <technique profile="OpenCOLLADAMaya">
+                  <originalMayaNodeId>jointHead</originalMayaNodeId>
+                </technique>
+              </extra>
+            </node>
+            <node id="jointPalate" name="jointPalate" sid="jointPalate" type="JOINT">
+              <matrix sid="transform">0.02701716 0.999635 0 1.984753 0.999635 -0.02701716 0 4.719302 0 0 -1 0 0 0 0 1</matrix>
+              <node id="joint6" name="joint6" sid="joint6" type="JOINT">
+                <matrix sid="transform">-0.999635 0.02701716 0 6.530017 0.02701716 0.999635 0 0 0 0 -1 0 0 0 0 1</matrix>
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <originalMayaNodeId>joint6</originalMayaNodeId>
+                  </technique>
+                </extra>
+              </node>
+              <extra>
+                <technique profile="OpenCOLLADAMaya">
+                  <originalMayaNodeId>jointPalate</originalMayaNodeId>
+                </technique>
+              </extra>
+            </node>
+            <node id="jointJaw" name="jointJaw" sid="jointJaw" type="JOINT">
+              <matrix sid="transform">0.02082881 0.9997831 0 -1.631908 0.9997831 -0.02082881 0 4.719302 0 0 -1 0 0 0 0 1</matrix>
+              <node id="joint8" name="joint8" sid="joint8" type="JOINT">
+                <matrix sid="transform">-0.9997831 0.02082881 0 6.352589 0.02082881 0.9997831 0 0 0 0 -1 0 0 0 0 1</matrix>
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <originalMayaNodeId>joint8</originalMayaNodeId>
+                  </technique>
+                </extra>
+              </node>
+              <extra>
+                <technique profile="OpenCOLLADAMaya">
+                  <originalMayaNodeId>jointJaw</originalMayaNodeId>
+                </technique>
+              </extra>
+            </node>
+            <node id="eyes" name="eyes" type="NODE">
+              <matrix sid="transform">-0.2748644 0.961483 0 -11.161 -0.961483 -0.2748644 0 3.930022 0 0 1 0 0 0 0 1</matrix>
+              <node id="eyeL" name="eyeL" type="NODE">
+                <matrix sid="transform">0 -0.4523802 0 -5.120216 0.4523802 0 0 16.31824 0 0 0.4523802 1.893469 0 0 0 1</matrix>
+                <instance_geometry url="#eyeLShape">
+                  <bind_material>
+                    <technique_common>
+                      <instance_material symbol="lambert2SG" target="#cocoMat">
+                        <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                      </instance_material>
+                    </technique_common>
+                  </bind_material>
+                </instance_geometry>
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <originalMayaNodeId>eyeL</originalMayaNodeId>
+                  </technique>
+                </extra>
+              </node>
+              <node id="eyeR" name="eyeR" type="NODE">
+                <matrix sid="transform">0 -0.4523802 0 -5.120216 0.4523802 0 0 16.31824 0 0 0.4523802 -1.861098 0 0 0 1</matrix>
+                <instance_geometry url="#eyeRShape">
+                  <bind_material>
+                    <technique_common>
+                      <instance_material symbol="lambert2SG" target="#cocoMat">
+                        <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                      </instance_material>
+                    </technique_common>
+                  </bind_material>
+                </instance_geometry>
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <originalMayaNodeId>eyeR</originalMayaNodeId>
+                  </technique>
+                </extra>
+              </node>
+              <node id="eyeBrowL" name="eyeBrowL" type="NODE">
+                <matrix sid="transform">0 -0.7303578 0 -5.389464 0.6605359 0 0 18.38097 0 0 0.7303578 1.949646 0 0 0 1</matrix>
+                <instance_geometry url="#eyeBrowLShape">
+                  <bind_material>
+                    <technique_common>
+                      <instance_material symbol="lambert2SG" target="#cocoMat">
+                        <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                      </instance_material>
+                    </technique_common>
+                  </bind_material>
+                </instance_geometry>
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <originalMayaNodeId>eyeBrowL</originalMayaNodeId>
+                  </technique>
+                </extra>
+              </node>
+              <node id="eyeBrowR" name="eyeBrowR" type="NODE">
+                <matrix sid="transform">0 -0.7303578 0 -5.389464 0.6605359 0 0 18.38097 0 0 0.7303578 -1.867275 0 0 0 1</matrix>
+                <instance_geometry url="#eyeBrowRShape">
+                  <bind_material>
+                    <technique_common>
+                      <instance_material symbol="lambert2SG" target="#cocoMat">
+                        <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                      </instance_material>
+                    </technique_common>
+                  </bind_material>
+                </instance_geometry>
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <originalMayaNodeId>eyeBrowR</originalMayaNodeId>
+                  </technique>
+                </extra>
+              </node>
+              <extra>
+                <technique profile="OpenCOLLADAMaya">
+                  <originalMayaNodeId>eyes</originalMayaNodeId>
+                </technique>
+              </extra>
+            </node>
+            <extra>
+              <technique profile="OpenCOLLADAMaya">
+                <originalMayaNodeId>jointNeck</originalMayaNodeId>
+              </technique>
+            </extra>
+          </node>
+          <extra>
+            <technique profile="OpenCOLLADAMaya">
+              <originalMayaNodeId>jointShoulders</originalMayaNodeId>
+            </technique>
+          </extra>
+        </node>
+        <extra>
+          <technique profile="OpenCOLLADAMaya">
+            <originalMayaNodeId>joint1</originalMayaNodeId>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>
