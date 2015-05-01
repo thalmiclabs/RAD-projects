@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>global=window</script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+		<script src='node_modules/myo/myo.js'></script>
+		<script src='grid.myo.js'></script>
+
+
+
+		<style>
+			body{
+				background-color : #0A0A0A;
+				color : #84FFF1;
+				font-family: 'Open Sans', sans-serif;
+			}
+
+			#plot{
+				width:800px;
+				height:300px;
+			}
+
+
+			#coords{
+				position: relative;
+				border : #84FFF1 1px solid;
+				width : 600px;
+				height : 600px;
+			}
+
+			#x, #y{
+				position: absolute;
+				top : 0px;
+				left : 0px;
+			}
+
+			#x{
+				height : 100%;
+				border-right : #84FFF1 1px solid;
+			}
+			#y{
+				width : 100%;
+				border-bottom : #84FFF1 1px solid;
+			}
+
+			.grid{
+				display: inline-block;
+				border : #84FFF1 1px solid;
+				width : 195px;
+				height : 198px;
+			}
+			.grid.show{
+				background-color: red;
+			}
+
+		</style>
+	</head>
+	<body>
+		<title>Fencing</title>
+
+		<div id='plot'>
+
+
+		</div>
+
+		<div id='coords'>
+			<div id='x'></div>
+			<div id='y'></div>
+			<div id='grid1' class='grid'>1</div>
+			<div id='grid2' class='grid'>2</div>
+			<div id='grid3' class='grid'>3</div>
+			<div id='grid4' class='grid'>4</div>
+			<div id='grid5' class='grid'>5</div>
+			<div id='grid6' class='grid'>6</div>
+			<div id='grid7' class='grid'>7</div>
+			<div id='grid8' class='grid'>8</div>
+			<div id='grid9' class='grid'>9</div>
+		</div>
+	</body>
+
+	<script src='fencing.js'></script>
+
+
+</html>
