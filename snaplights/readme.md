@@ -1,4 +1,4 @@
-# Snap on, Snap off: Myo Light Control
+# Snap on, Snap off: Myo Snap Light Control
 
 This is the RAD team's first project. Suggested by @tbaker6. When you snap, turn on some lights. Pretty simple, but very awesome.
 
