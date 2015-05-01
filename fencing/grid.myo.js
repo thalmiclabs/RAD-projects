@@ -6,39 +6,36 @@ getEulerAngles = function(q){
 	}
 }
 
-var prevYaw = 0;
-var prevRoll = 0;
-
-baseline = -1;
-
-lastThree = [0,0,0];
-
-hasLowPeak = function(){
-	return lastThree[0] > lastThree[1] && lastThree[1] < lastThree[2] && lastThree[1] < 0;
-}
-
-hasHighPeak = function(){
-	return lastThree[0] < lastThree[1] && lastThree[1] > lastThree[2] && lastThree[1] > 1;;
-}
-
 Myo.on('orientation', function(quanternion){
 	var angles = getEulerAngles(quanternion);
+	var x = Math.sin(angles.yaw) * Math.cos(angles.pitch)
+	var y = Math.sin(angles.pitch)
+	this.trigger('vector', [x,y]);
+})
 
 
-	lastThree.shift();
-	lastThree.push(angles.roll);
 
-	if(hasHighPeak()) console.log('HIGH');
-	if(hasLowPeak()) console.log('LOW');
+var gridSize = 0.2;
+Myo.on('vector', function(coords){
 
-	if(prevYaw < -1 && angles.yaw > 1) this.trigger('push_up')
-	if(prevYaw > 1 && angles.yaw < -1) this.trigger('push_down')
-	prevYaw = angles.yaw;
+	var x = coords[0];
+	var y = coords[1];
 
-	if(prevRoll < -1 && angles.roll > 1) this.trigger('push_up')
-	if(prevRoll > 1 && angles.roll < -1) this.trigger('push_down')
-	prevRoll = angles.roll;
+	var getSide = function(x){
+		if(x < -gridSize) return 'right';
+		if(x > gridSize) return 'left';
+		return 'center';
+	}
 
+	var getBand = function(y){
+		if(y < -gridSize) return 'upper';
+		if(y > gridSize) return 'lower';
+		return 'center';
+	}
 
+	this.trigger('grid', {
+		band : getBand(y),
+		side : getSide(x)
+	});
 
 })

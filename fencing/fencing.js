@@ -39,8 +39,6 @@ var genData = function(){
 	})
 }
 
-
-
 var graph = $.plot('#plot', genData(),{
 	series: {shadowSize: 0},
 	colors: [ '#04fbec', '#ebf1be', '#c14b2a', '#8aceb5'],
@@ -68,10 +66,13 @@ var addData = function(angles){
 
 
 
-	$('#x').width(250 + -250*x);
-	$('#y').height(250 + 250*z);
-
 }
+
+
+myo.on('vector', function(coords){
+	$('#x').width(300 + -300*coords[0]);
+	$('#y').height(300 + 300*coords[1]);
+})
 
 
 var prevVal = 0;
@@ -88,19 +89,25 @@ myo.on('orientation', function(o){
 
 });
 
-
-var numOfPushups = 0;
-
-var isDown = false;
-
-myo.on('push_down', function(){
-	isDown = true;
+myo.on('fist', function(){
+	myo.zeroOrientation();
 })
 
-myo.on('push_up', function(){
-	if(isDown){
-		isDown = false;
-		numOfPushups++;
-		$('#pushUpCounter').text(numOfPushups.toString());
-	}
+myo.on('grid', function(grid){
+
+	$('.grid').removeClass('show');
+
+	var gridNumber = 0;
+	if(grid.band === 'upper') gridNumber = 1;
+	if(grid.band === 'center') gridNumber = 4;
+	if(grid.band === 'lower') gridNumber = 7;
+
+	if(grid.side === 'left') gridNumber += 0;
+	if(grid.side === 'center') gridNumber += 1;
+	if(grid.side === 'right') gridNumber += 2;
+
+
+
+	$('#grid' + gridNumber).addClass('show');
+
 })

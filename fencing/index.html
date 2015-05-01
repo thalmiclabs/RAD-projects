@@ -22,15 +22,12 @@
 				height:300px;
 			}
 
-			#pushUpCounter{
-				font-size: 4em;
-			}
 
 			#coords{
 				position: relative;
 				border : #84FFF1 1px solid;
-				width : 500px;
-				height : 500px;
+				width : 600px;
+				height : 600px;
 			}
 
 			#x, #y{
@@ -48,6 +45,16 @@
 				border-bottom : #84FFF1 1px solid;
 			}
 
+			.grid{
+				display: inline-block;
+				border : #84FFF1 1px solid;
+				width : 195px;
+				height : 198px;
+			}
+			.grid.show{
+				background-color: red;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -58,13 +65,18 @@
 
 		</div>
 
-		<div id='roll'></div>
-		<div id='pushUpCounter'>0</div>
-
-
 		<div id='coords'>
 			<div id='x'></div>
 			<div id='y'></div>
+			<div id='grid1' class='grid'>1</div>
+			<div id='grid2' class='grid'>2</div>
+			<div id='grid3' class='grid'>3</div>
+			<div id='grid4' class='grid'>4</div>
+			<div id='grid5' class='grid'>5</div>
+			<div id='grid6' class='grid'>6</div>
+			<div id='grid7' class='grid'>7</div>
+			<div id='grid8' class='grid'>8</div>
+			<div id='grid9' class='grid'>9</div>
 		</div>
 	</body>
 
