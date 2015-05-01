@@ -51,7 +51,7 @@ public:
 				printf("LockWorkStation failed with %d\n", GetLastError());
 			}
 			else {
-				std::cout << "Unlock and make a fist to lock your computer";
+				std::cout << "Unlock and make a fist to lock your computer" << std::endl;
 			}
 		}
     }
