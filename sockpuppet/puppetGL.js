@@ -1,3 +1,8 @@
+/**
+ * Taken from http://www.mediosyproyectos.com/puppetic/
+ *
+ */
+
 
 var CLOSED = -0.08;
 
@@ -57,8 +62,6 @@ window.onload = function() {
 	var bones = [];
 
 	loader.load('sockpuppet/sockpuppet.dae' , function ( collada ) {
-
-		console.log(collada);
 
 	    dae = collada.scene;
 	    skin = collada.skins[ 0 ];
@@ -140,44 +143,6 @@ window.onload = function() {
 		lastKey = ev.which;
 	});
 
-
-	window.addEventListener('keyup', function(ev){
-
-		if (modeAuto) return;
-
-		if (lastKey == ev.which) {
-			nMouthOpen = CLOSED;
-			lastKey = 0;
-		}
-	});
-
-	document.addEventListener('contextmenu', function(ev) {
-	    ev.preventDefault();
-	    return false;
-	}, false);
-
-	document.addEventListener('mousedown', function(ev) {
-
-		if (modeAuto) return;
-
-		switch (ev.button) {
-			case 0:
-				eyeBrownOnlyOne = true;
-				break;
-			case 1:
-				eyeBrownOff = -0.5;
-				break;
-			case 2:
-				eyeBrownOff = 0.5;
-				break;
-		}
-	}, false);
-
-	document.addEventListener('mouseup', function(ev) {
-		if (modeAuto) return;
-		eyeBrownOnlyOne = false;
-		eyeBrownOff = EYEBROWN_INIT_ROTATION;
-	}, false);
 
 	var render = function () {
 
