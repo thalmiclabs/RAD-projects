@@ -4,164 +4,56 @@ myo.on('connected', function(){
 	myo.streamEMG(true);
 })
 
+var setupSound = function(){
+	var context = new window.AudioContext();
 
-var getDummyData = function(){
-	return _.times(500, function(index){
-		return 0
-	});
-}
-
-var data = {
-	emg : getDummyData(),
-	movingAverage : getDummyData(),
-	ema : getDummyData(),
-
-	movingAverage2 : getDummyData(),
-
-	cond : getDummyData(),
-};
+	osc = context.createOscillator();
+	osc.frequency.value = 0;
+	osc.connect(context.destination);
+	osc.start(0);
+}()
 
 
-var genData = function(){
-	return _.map(data, function(vals, key){
-		return {
-			label : key,
-			data : _.map(vals, function(d, index){
-				return [index, d]
-			})
-		}
-	})
-}
-
-/*
-var graph = $.plot('#plot', genData(),{
-	series: {shadowSize: 0},
-	//colors: [ '#04fbec', '#c14b2a', '#ebf1be', '#8aceb5'],
-	colors: [ 'black', 'black', 'black', '#8aceb5', '#c14b2a'],
-	yaxis : {
-		min : 0,
-		max : 50
-	}
-});
-
-*/
-
-var context = new window.AudioContext();
-
-var osc = context.createOscillator();
-osc.frequency.value = 0;
-osc.connect(context.destination);
-osc.start(0);
-
-
-//osc.type = "sawtooth";
-//osc.type = "square";
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-var gain = context.createGain();
-gain.gain.value = 100;
-gain.connect(osc.frequency);
-
-var osc2 = context.createOscillator();
-osc2.frequency.value = 1;
-osc2.connect(gain);
-osc2.start(0);
-*/
-
-var oldValue = 0;
-
-var alpha = 0.3
-
-var t = 0;
-
+var sawtoothWave = _.times(15, function(){ return 0});
 
 myo.on('emg', function(emg){
-	//console.log(emg);
 
-	var average = _.reduce(emg, function(r, pod){
+	//Normalize the EMG data and cut out some noise
+	var emgAverage = _.reduce(emg, function(r, pod){
 		return r + pod;
 	},0)/emg.length;
-
-	if(average < 0) average *= -1
-
-	if(average < 5) average = 0;
-
-	//console.log(average);
-
-	data.emg.shift();
-	data.emg.push(average);
-
-	var newValue = oldValue + alpha * (average - oldValue);
-
-	data.ema.shift();
-	data.ema.push(newValue);
+	if(emgAverage < 0) emgAverage *= -1
+	if(emgAverage < 5) emgAverage = 0;
 
 
-
-	var movingAverage = 0;
-	_.times(5, function(index){
-		movingAverage += data.emg[data.emg.length - (index + 1)]
-	})
-	movingAverage = movingAverage/5
-	data.movingAverage.shift();
-	data.movingAverage.push(movingAverage);
-
-
-
-
-
-	if(average > t){
-		t = average;
+	//Produces a fast rise, slow fall, sawtooth-like dataset from the EMG data
+	var lastVal = _.last(sawtoothWave);
+	if(emgAverage > lastVal){
+		lastVal = emgAverage;
 	}else{
-		t -= 1;
+		lastVal -= 1;
 	}
-	if(t<0) t=0;
-
-	data.cond.shift();
-	data.cond.push(t);
-
-
-	var movingAverage2 = 0;
-	_.times(15, function(index){
-		movingAverage2 += data.cond[data.emg.length - (index + 1)]
-	})
-	movingAverage2 = movingAverage2/15
-	data.movingAverage2.shift();
-	data.movingAverage2.push(movingAverage2);
+	if(lastVal<0) lastVal=0;
+	sawtoothWave.shift();
+	sawtoothWave.push(lastVal);
 
 
+	//Smooths the spikey-ness into something we can use
+	var smoothedAverage = _.reduce(sawtoothWave, function(r, val){
+		return r + val;
+	}, 0)/sawtoothWave.length;
 
+	this.trigger('puppet_mouth', smoothedAverage);
 
+})
 
-	osc.frequency.value = 500 * (movingAverage2)/30
+myo.on('puppet_mouth', function(val){
+	//Using the puppet mouth with some tweak variables to get the desired effect
+	osc.frequency.value = 500/30 * val;
 
-
-	//$('#puppet').height(300 * (movingAverage2)/30);
-
-	var val = movingAverage2/50;
-
-	if(val < 0.2) val = -0.08;
-
-	nMouthOpen = val;
-
-
-	console.log(val);
-
-
-/*
-	graph.setData(genData());
-	graph.draw();
-	*/
+	if(val/50 < 0.2){
+		nMouthOpen = -0.08
+	}else{
+		nMouthOpen = val/50;
+	}
 })
